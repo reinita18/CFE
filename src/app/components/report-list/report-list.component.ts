@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import {ReportsService} from "../../services/reports.service"
+
 
 @Component({
   selector: 'app-report-list',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportListComponent implements OnInit {
 
-  constructor() { }
+  @HostBinding('class') classes = 'row';
+
+  reports: any = [];
+
+  constructor(private reportsService:ReportsService) {}
 
   ngOnInit(): void {
+
+    this.reportsService.getReports().subscribe(
+      
+      res => {
+        console.log(res)
+        this.reports = res;
+
+      },
+      err => console.error(err)
+    );
+    
   }
 
 }

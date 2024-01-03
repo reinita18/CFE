@@ -1,1 +1,20 @@
-<p>report-list works!</p>
+<app-navigation></app-navigation>
+
+<div class="col-md-3" *ngFor="let report of reports">
+  <div class="m-3" style="max-width: 20rem;">
+    <div class="card border-success mb-3" style="max-width: 20rem;">
+      <div class="card-header">
+        <div>{{report.fecha}}</div>
+        <p class="card-text">{{report.zona}}</p>
+        <button>
+          <img src="../../../assets/print-icon.png" alt="Imprimir"/>
+        </button>
+        </div>
+      <div class="card-body">
+        <h4 class="card-title">No. Orden  {{report.noOrden}}</h4>
+        
+        <p class="card-text">{{report.observaciones}}</p>
+      </div>
+    </div>
+  </div>
+</div>
