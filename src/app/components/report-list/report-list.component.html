@@ -6,7 +6,7 @@
       <div class="card-header">
         <div>{{report.fecha}}</div>
         <p class="card-text">{{report.zona}}</p>
-        <button>
+        <button (click)="generarPDF(report.noOrden)">
           <img src="../../../assets/print-icon.png" alt="Imprimir"/>
         </button>
         </div>
