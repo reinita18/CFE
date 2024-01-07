@@ -1,19 +1,13 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand">CFEMATICO</a>
-
-
+      <a class="navbar-brand" href="/reports">CFEMATICO</a>
 
       <form class="d-flex" [formGroup]="numeroForm">
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" formControlName="numero">
-        <button class="btn btn-outline-success" type="button" (click)="getNumero(numeroForm.value)">Search</button>
+        <input class="form-control me-2" type="text" placeholder="No. Orden" aria-label="Search" formControlName="numero">
+        <button class="btn btn-success" type="button" (click)="getNumero(numeroForm.value)">Buscar</button>
       </form>
-
 
       <a class="navbar-brand" href="/">Cerrar Sesión</a>
     </div>
-
-    
-
 
   </nav>
