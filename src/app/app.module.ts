@@ -11,15 +11,14 @@ import { ReportListComponent } from './components/report-list/report-list.compon
 import { NavigationComponent } from './components/navigation/navigation.component';
 
 import {ReportsService} from "./services/reports.service";
-import { ReportComponent } from './components/report/report.component'
-
+import { ReportComponent } from './components/report/report.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ReportListComponent,
     NavigationComponent,
-    ReportComponent
+    ReportComponent,
   ],
   imports: [
     BrowserModule,
