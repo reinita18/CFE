@@ -229,15 +229,41 @@ export class ReportListComponent implements OnInit {
       //diagnostico
       page.drawText('Mantenimiento', { x:380, y: height - 390, size: 12});
       page.drawText(datos.diagnosticoFallas, { x:330, y: height - 400, size: 7});
-
+      //separacion
       page.drawLine({
-        start: { x: 35, y: height - 575 },
-        end: { x: 565, y: height - 575 },
+        start: { x: 35, y: height - 525 },
+        end: { x: 565, y: height - 525 },
         thickness: 2,
         color: rgb(0, 0, 0), // Color rojo
       });
+      //refacciones
+      page.drawText('REFACCIONES Y MATERIAL UTILIZADO', { x:50, y: height - 545, size: 14});
+      //nombre
+      page.drawText('Nombre', { x:100, y: height - 565, size: 10 });
+      page.drawText(datos.refaciones[0].nombre, { x:100, y: height - 580, size: 9 });
+      page.drawText(datos.refaciones[1].nombre, { x:100, y: height - 595, size: 9 });
+      //numero de seria
+      page.drawText('Numero de Serie', { x:200, y: height - 565, size: 10 });
+      page.drawText(datos.refaciones[0].noSerie, { x:200, y: height - 580, size: 9 });
+      page.drawText(datos.refaciones[1].noSerie, { x:200, y: height - 595, size: 9 });
+      //instalado
+      page.drawText('Instalado', { x:350, y: height - 565, size: 10 });
+      page.drawText(datos.refaciones[0].instalado, { x:350, y: height - 580, size: 9 });
+      page.drawText(datos.refaciones[1].instalado, { x:350, y: height - 595, size: 9 });
+      //retirado
+      page.drawText('Retirado', { x:500, y: height - 565, size: 10 });
+      page.drawText(datos.refaciones[0].retirado, { x:500, y: height - 580, size: 9 });
+      page.drawText(datos.refaciones[1].retirado, { x:500, y: height - 595, size: 9 });
 
-      page.drawText('OBSERVACIONES', { x:80, y: height - 620, size: 14});
+
+      //OBSERVACIONEEEEEEEEEEEES---------------------------------
+      page.drawLine({
+        start: { x: 35, y: height - 610 },
+        end: { x: 565, y: height - 610 },
+        thickness: 2,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      page.drawText('OBSERVACIONES', { x:80, y: height - 625, size: 14});
       page.drawLine({
         start: { x: 75, y: height - 640 },
         end: { x: 450, y: height - 640 },
@@ -245,24 +271,104 @@ export class ReportListComponent implements OnInit {
         color: rgb(0, 0, 0), // Color rojo
       });
       page.drawLine({
-        start: { x: 75, y: height - 655 },
-        end: { x: 450, y: height - 655 },
+        start: { x: 75, y: height - 650 },
+        end: { x: 450, y: height - 650 },
         thickness: 1,
         color: rgb(0, 0, 0), // Color rojo
       });
       page.drawLine({
-        start: { x: 75, y: height - 670 },
-        end: { x: 450, y: height - 670 },
+        start: { x: 75, y: height - 660 },
+        end: { x: 450, y: height - 660 },
         thickness: 1,
         color: rgb(0, 0, 0), // Color rojo
       });
+      //separación
+      page.drawLine({
+        start: { x: 35, y: height - 675 },
+        end: { x: 565, y: height - 675 },
+        thickness: 2,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      //llenado por cfe
+      page.drawText('PARA SER LLENADO POR CFE', { x:80, y: height - 695, size: 14});
+      page.drawText('Se acepta mantenimiento', { x:100, y: height - 715, size: 10});
+      page.drawText('Si', { x:255, y: height - 715, size: 10});
+      page.drawText('No', { x:295, y: height - 715, size: 10});
+      page.drawText(`Hora de finalización: ${datos.horaTermino}`, { x:350, y: height - 715, size: 10});
+      if (datos.aceptaMantenimiento) {
+        this.dibujarCheckbox(page, 241,  height - 715, true);
+        this.dibujarCheckbox(page, 281,  height - 715, false);
+      }else{
+        this.dibujarCheckbox(page, 241,  height - 715, false);
+        this.dibujarCheckbox(page, 281,  height - 715, true);
+      }
+      //2do renglon
+      page.drawText('Calidad del servicio', { x:100, y: height - 730, size: 10});
+      page.drawText('Bueno', { x:255, y: height - 730, size: 10});
+      page.drawText('Malo', { x:355, y: height - 730, size: 10});
+      page.drawText('Regular', { x:455, y: height - 730, size: 10});
+      if (datos.calidadServicio == "BUENO") {
+        this.dibujarCheckbox(page, 241,  height - 730, true);
+        this.dibujarCheckbox(page, 341,  height - 730, false);
+        this.dibujarCheckbox(page, 441,  height - 730, false);
+        
+      } else if (datos.calidadServicio == "MALO") {
+        this.dibujarCheckbox(page, 241,  height - 730, false);
+        this.dibujarCheckbox(page, 341,  height - 730, true);
+        this.dibujarCheckbox(page, 441,  height - 730, false);
+      } else{
+        this.dibujarCheckbox(page, 241,  height - 730, false);
+        this.dibujarCheckbox(page, 341,  height - 730, false);
+        this.dibujarCheckbox(page, 441,  height - 730, true);
+      }
+      //separación
+      // page.drawLine({
+      //   start: { x: 35, y: height - 745 },
+      //   end: { x: 565, y: height - 745 },
+      //   thickness: 2,
+      //   color: rgb(0, 0, 0), // Color rojo
+      // });
+      //firmas
+      page.drawText('Responsable Proovedor', { x:40, y: height - 780, size: 9});
+      page.drawLine({
+        start: { x: 30, y: height - 820 },
+        end: { x: 150, y: height - 820 },
+        thickness: 1,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      page.drawText('RPE, Nombre y Firma', { x:50, y: height - 830, size: 8});
 
 
+      page.drawText('Operador CFEMATICO', { x:170, y: height - 780, size: 9});
+      page.drawLine({
+        start: { x: 160, y: height - 820 },
+        end: { x: 280, y: height - 820 },
+        thickness: 1,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      page.drawText('RPE, Nombre y Firma', { x:180, y: height - 830, size: 8});
 
 
-    
+      page.drawText('Administrador contrato zona', { x:310, y: height - 780, size: 9});
+      page.drawLine({
+        start: { x: 310, y: height - 820 },
+        end: { x: 430, y: height - 820 },
+        thickness: 1,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      page.drawText('RPE, Nombre y Firma', { x:330, y: height - 830, size: 8});
 
 
+      page.drawText('Administrador contrato división', { x:450, y: height - 780, size: 9});
+      page.drawLine({
+        start: { x: 450, y: height - 820 },
+        end: { x: 570, y: height - 820 },
+        thickness: 1,
+        color: rgb(0, 0, 0), // Color rojo
+      });
+      page.drawText('RPE, Nombre y Firma', { x:470, y: height - 830, size: 8});
+
+      
 
 
 
