@@ -5,11 +5,12 @@
     <div class="card border-success mb-3" style="max-width: 20rem;">
       <div class="card-header">
         <div>{{report.fecha}}</div>
-        <p class="card-text">{{report.zona}}</p>
+        <p id="zona" class="card-text">Zona: {{report.zona}}</p>
         <button (click)="generarPDF(report.noOrden)">
           <img src="../../../assets/print-icon.png" alt="Imprimir"/>
         </button>
-        </div>
+        
+      </div>
       <div class="card-body">
         <h4 class="card-title">No. Orden  {{report.noOrden}}</h4>
         
